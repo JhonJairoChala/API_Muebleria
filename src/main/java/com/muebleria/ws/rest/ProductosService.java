@@ -90,9 +90,10 @@ public class ProductosService {
 	}
 	
 	@DeleteMapping("eliminar/{id}")
-	public ResponseEntity<Void>eliminarProducto(@PathVariable int codigo){
+	public ResponseEntity<Void>eliminarProducto(@PathVariable("id") int codigo){
 	
 		ProductosVo producto=productosDao.consultarProductoIndividual(codigo);
+		System.out.println(producto.toString());
 		if(producto!=null) {
 			productosDao.eliminarProducto(producto);
 			return ResponseEntity.ok(null);
